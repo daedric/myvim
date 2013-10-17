@@ -1,4 +1,4 @@
-nmap <buffer> <c-f> "zyiw:call daedric#myvim#Refactor()<cr>mx:silent! norm gd<cr>[{V%:s/<C-R>//<c-r>z/g<cr>`x
+nmap <buffer> <M-f> "zyiw:call daedric#myvim#Refactor()<cr>mx:silent! norm gd<cr>[{V%:s/<C-R>//<c-r>z/g<cr>`x
 
 
 let s:clangpath=fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/../clang/clang-format.py'
@@ -8,8 +8,8 @@ function! s:FormatMe()
 endfunction
 
 "noremap <C-K> :pyf <SID>clangpath <CR>
-map <C-K> :call <SID>FormatMe()<CR>
-imap <C-K> <ESC>:call <SID>FormatMe()<CR>i
+map <c-f> :call <SID>FormatMe()<CR>
+imap <c-f> <ESC>:call <SID>FormatMe()<CR>i
 
 let c_source = [ 'cc', 'cxx', 'cpp', 'C']
 let c_header = [ 'h', 'hh', 'hpp', 'hxx']
@@ -25,9 +25,4 @@ elseif index(c_header, b:current_file_ext) != -1
     let b:fswitchlocs = 'reg:/include/src/,ifrel:|/include/|../src|,./'
 endif
 
-
-nmap <silent> <C-I> :FSHere<cr>
-nmap <silent> <C-L> :FSSplitRight<cr>
-nmap <silent> <C-H> :FSSplitLeft<cr>
-nmap <silent> <C-K> :FSSplitAbove<cr>
-nmap <silent> <C-J> :FSSplitBelow<cr>
+nnoremap <C-@>   :FSHere<cr>
