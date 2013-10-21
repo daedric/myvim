@@ -25,4 +25,8 @@ elseif index(c_header, b:current_file_ext) != -1
     let b:fswitchlocs = 'reg:/include/src/,ifrel:|/include/|../src|,./'
 endif
 
-nnoremap <C-@>   :FSHere<cr>
+if has("gui_running")
+    nmap <C-s>   :FSHere<cr>
+else
+    nmap <C-@>   :FSHere<cr>
+endif
