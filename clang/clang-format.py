@@ -19,7 +19,6 @@
 
 import difflib
 import json
-import os
 import subprocess
 import sys
 import vim
@@ -31,8 +30,7 @@ binary = 'clang-format'
 # 'clang-format --help' for a list of supported styles. The default looks for
 # a '.clang-format' or '_clang-format' file to indicate the style that should be
 # used.
-style = "file"
-
+style = 'file'
 
 # Get the current text.
 buf = vim.current.buffer
@@ -50,9 +48,10 @@ if sys.platform.startswith('win32'):
   startupinfo.wShowWindow = subprocess.SW_HIDE
 
 # Call formatter.
-p = subprocess.Popen([binary, '-lines', lines, '-style', style,
-                      '-cursor', str(cursor),
-                      '-assume-filename', vim.current.buffer.name],
+command = [binary, '-lines', lines, '-style', style, '-cursor', str(cursor)]
+if vim.current.buffer.name:
+  command.extend(['-assume-filename', vim.current.buffer.name])
+p = subprocess.Popen(command,
                      stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                      stdin=subprocess.PIPE, startupinfo=startupinfo)
 stdout, stderr = p.communicate(input=text)
@@ -60,7 +59,6 @@ stdout, stderr = p.communicate(input=text)
 # If successful, replace buffer contents.
 if stderr:
   message = stderr.splitlines()[0]
-  print 'Message: {}'.format(message)
   parts = message.split(' ', 2)
   if len(parts) > 2:
     message = parts[2]
