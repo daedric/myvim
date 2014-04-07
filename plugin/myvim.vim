@@ -11,4 +11,4 @@ def PyExecReplace(line1,line2):
   redirected.close()
 EOL
 
-command -range Pyer python PyExecReplace(<f-line1>,<f-line2>)
+command! -range Pyer python PyExecReplace(<f-line1>,<f-line2>)

@@ -11,8 +11,8 @@ endfunction
 map <c-f> :call <SID>FormatMe()<CR>
 imap <c-f> <ESC>:call <SID>FormatMe()<CR>i
 
-let c_source = [ 'cc', 'cxx', 'cpp', 'C']
-let c_header = [ 'h', 'hh', 'hpp', 'hxx']
+let c_source = [ 'cpp' , 'cc' , 'cxx' , 'C']
+let c_header = [ 'hpp' , 'h'  , 'hh'  , 'hxx']
 
 let b:current_file_ext = expand('%:e')
 
