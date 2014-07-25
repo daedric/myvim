@@ -16,7 +16,6 @@ let c_header = [ 'hpp' , 'h'  , 'hh'  , 'hxx']
 
 let b:current_file_ext = expand('%:e')
 
-
 if index(c_source, b:current_file_ext) != -1
     let b:fswitchdst  = join(c_header, ',')
     let b:fswitchlocs = 'reg:/src/include/,ifrel:|/src/|../include|,./'
@@ -28,5 +27,5 @@ endif
 if has("gui_running")
     nmap <C-s>   :FSHere<cr>
 else
-    nmap <C-@>   :FSHere<cr>
+    nmap <Leader>s   :FSHere<cr>
 endif
