@@ -6,5 +6,5 @@ function! s:FormatMe()
     exe 'pyfile '. fnameescape(s:clangpath)
 endfunction
 
-map <c-f> :call <SID>FormatMe()<CR>
-imap <c-f> <ESC>:call <SID>FormatMe()<CR>i
+map  <buffer> <c-f> :call <SID>FormatMe()<CR>
+imap <buffer> <c-f> <ESC>:call <SID>FormatMe()<CR>i

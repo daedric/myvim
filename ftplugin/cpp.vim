@@ -8,8 +8,8 @@ function! s:FormatMe()
 endfunction
 
 "noremap <C-K> :pyf <SID>clangpath <CR>
-map <c-f> :call <SID>FormatMe()<CR>
-imap <c-f> <ESC>:call <SID>FormatMe()<CR>i
+map  <buffer> <c-f> :call <SID>FormatMe()<CR>
+imap <buffer> <c-f> <ESC>:call <SID>FormatMe()<CR>i
 
 let c_source = [ 'cpp' , 'cc' , 'cxx' , 'C']
 let c_header = [ 'hpp' , 'h'  , 'hh'  , 'hxx']
@@ -25,7 +25,7 @@ elseif index(c_header, b:current_file_ext) != -1
 endif
 
 if has("gui_running")
-    nmap <C-s>   :FSHere<cr>
+    nmap <buffer> <C-s>   :FSHere<cr>
 else
-    nmap <Leader>s   :FSHere<cr>
+    nmap <buffer> <Leader>s   :FSHere<cr>
 endif
