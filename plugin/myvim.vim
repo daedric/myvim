@@ -1,8 +1,8 @@
-python << EOL
-import vim, StringIO,sys
+py3 << EOL
+import vim, io, sys
 def PyExecReplace(line1,line2):
   r = vim.current.buffer.range(int(line1),int(line2))
-  redirected = StringIO.StringIO()
+  redirected = io.StringIO.StringIO()
   sys.stdout = redirected
   exec('\n'.join(r) + '\n')
   sys.stdout = sys.__stdout__
@@ -11,4 +11,4 @@ def PyExecReplace(line1,line2):
   redirected.close()
 EOL
 
-command! -range Pyer python PyExecReplace(<f-line1>,<f-line2>)
+command! -range Pyer py3 PyExecReplace(<f-line1>,<f-line2>)
